@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Playback controls overlay for VrPlayerActivity. Hidden by default; a tap on the GL
+    surface toggles it (see VrPlayerActivity.toggleControls()). Kept as plain Android
+    views (not Compose) since VrPlayerActivity is a classic View-based Activity and this
+    avoids pulling Compose interop into a screen that doesn't otherwise use it.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/controlsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:background="#AA000000"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="16dp">
+
+    <!-- Optional video title, blank/gone unless one was passed in from another app. -->
+    <TextView
+        android:id="@+id/controlsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:paddingBottom="4dp" />
+
+    <!-- Scrubber row: current position, seek bar, duration. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/currentTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0:00"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:minWidth="42dp" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:max="1000" />
+
+        <TextView
+            android:id="@+id/durationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0:00"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:minWidth="42dp"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <!-- Transport row: rewind cluster, play/pause, forward cluster. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="4dp">
+
+        <Button
+            android:id="@+id/back30"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-30s"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#33FFFFFF" />
+
+        <Button
+            android:id="@+id/back20"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="-20s"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#33FFFFFF" />
+
+        <Button
+            android:id="@+id/back10"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="-10s"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#33FFFFFF" />
+
+        <Button
+            android:id="@+id/playPauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minWidth="72dp"
+            android:text="⏸"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#55FFFFFF" />
+
+        <Button
+            android:id="@+id/forward10"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+10s"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#33FFFFFF" />
+
+        <Button
+            android:id="@+id/forward20"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="+20s"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#33FFFFFF" />
+
+        <Button
+            android:id="@+id/forward30"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="+30s"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#33FFFFFF" />
+    </LinearLayout>
+</LinearLayout>
